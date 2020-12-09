@@ -9,6 +9,7 @@ while True:
     menu0 = str(input("Opcion: "))
     if menu0 == "A" or menu0 == "a":    #Menu para seleccion de jugadores participantes y sus nombres
         while True:
+            d = 0
             print("Especifica la cantidad de jugadores para jugar o escribe -1 para volver atras:\nMinimo: 2\nMaximo: 8")
             cantjug = int(input())
             if cantjug >= 2 and cantjug <= 8:
@@ -30,13 +31,40 @@ while True:
                             break
                         elif t == 1 or len(usuario) > 8 or usuario[0].isnumeric():  #cuando no se cumple criterios, se repite bucle
                             print("Escribe un nombre que siga las especificaciones\n")
-            elif cantjug == -1:
+                usuarios.insert(0, "Banca")
                 break
-            elif usuarios == True:
+            elif cantjug == -1:
                 break
             else:
                 print("Escribe un valor correcto\n")
-        #Cuando codigo para juego, poner aqui
+        #A partir de aqui se desenvolupa el juego mismo
+        dictjugar = {}
+        temp = 0
+        for i in usuarios:
+            dictjugar[i] = [[],"plantado","Jugando",temp,0,0,20]
+            temp += 1
+        while True:     #Preparativos ronda
+            mazo2 = []      #Matriz que servira para cartas, o bucle ronda
+            for i in range(len(mazo)):
+                mazo2.append(" ")
+            while True:     #Nueva Mano
+                for i in dictjugar:
+                    a = random.randint(0,len(mazo))
+                    while True:
+                        if mazo2[a] != "X":
+                            mazo2[a] = "X"
+                            dictjugar[i][0].append(mazo[a])
+                            dictjugar[i][1] = "Jugando"
+                            dictjugar[i][4] = mazo[a][2]
+                            break
+                for i in dictjugar:
+                    if dictjugar[i][1] == "Jugando" and dictjugar[i][2] == "Jugando" and dictjugar[i] != "Banca":
+                        while True:
+                            print("hola") #Desenvolupar juego de usuario aca
+                            break
+                break
+            break
+
     elif menu0 == "B" or menu0 == "b":
         while True:
             print("Especifica la cantidad de CPU's para jugar en contra o escribe -1 para volver atras:\nMinimo: 1\nMaximo: 7")
@@ -68,10 +96,10 @@ while True:
                                 print("Escribe un nombre que siga las especificaciones\n")
             elif cantcpu == -1:
                 break
-            elif usuarios == True:
-                break
             else:
                 print("Escribe un valor correcto\n")
+            if usuarios == True:
+                break
     elif menu0 == "C" or menu0 == "c": #Contiene info de que es el juego
         print("Siete y Medii:\n\nEl siete y medio es un juego de cartas que utiliza la baraja española de 40 cartas.\n "
               "Eljuego consiste en obtener siete puntos y medio, o acercarse a esta puntuación lo más\n"
@@ -86,10 +114,4 @@ while True:
         break
     else:
         print("Elige una de las opciones en pantalla\n")
-
-
-
-
-
-print(usuarios)
 
