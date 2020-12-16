@@ -1,0 +1,35 @@
+#flexbox-container{
+    display:flex;
+         
+}
+#bodystyle{
+    background-color: grey;
+    
+}
+#flexbox-container > div {
+    width: 300px;
+    height: 100px;
+    text-align:left;
+    padding: 80px;
+}
+#divhead{
+    border-left: 8px solid ;
+    background-color: steelblue;
+}
+
+#lista{
+    font-size: 18px;
+    padding: 5px;
+}
+
+#separar{
+    padding: 15px;
+}
+
+#divprincipal{
+    border-style: solid;
+}
+
+#letrablanca{
+    color:white;
+}
