@@ -1,35 +1,29 @@
-#flexbox-container{
+.flexbox-container{
     display:flex;
-         
+    flex-direction: column;     
 }
-#bodystyle{
-    background-color: grey;
+.flexbox-container > div {
     
-}
-#flexbox-container > div {
-    width: 300px;
-    height: 100px;
     text-align:left;
-    padding: 80px;
+    padding: 50px;
 }
-#divhead{
+.divhead{
     border-left: 8px solid ;
     background-color: steelblue;
 }
 
-#lista{
+.lista{
     font-size: 18px;
     padding: 5px;
 }
 
-#separar{
-    padding: 15px;
+.separar{
+    padding: 20px;
 }
 
-#divprincipal{
-    border-style: solid;
-}
 
-#letrablanca{
-    color:white;
+.textformat{
+    padding: 10px;
+    text-align: left;
+    margin-left: 20px;
 }
