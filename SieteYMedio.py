@@ -46,10 +46,14 @@ while True:
             else:
                 dictjugar[i] = [[], "Jugando", "Jugando", temp, float(0), float(0), float(20),0,0]  # En ordern: Cartas, estado mano, estado partida, prioridad, puntos mano (o suma cartas), puntos apostados, puntos restantes, mano, manos ganadas
                 temp += 1
+        fbreak = 0
         while True:     #Preparativos ronda
             mazo2 = []      #Matriz que servira para cartas, o bucle ronda
             for i in range(len(mazo)): #Creacion de lista equivalente a la del mazo, sin info dentro de esta
                 mazo2.append(" ")
+            if dictjugar["Banca"][2] == "Eliminado":
+                dictjugar["Banca"][2] = "Jugando"
+                dictjugar["Banca"][6] = 20
             while True:     #Nueva Mano
                 for i in dictjugar:
                     a = random.randint(0,39)
@@ -64,122 +68,190 @@ while True:
                 for i in dictjugar: #Mano por jugador
                     if dictjugar[i][1] == "Jugando" and dictjugar[i][2] == "Jugando" and i != "Banca":
                         print("Informacion actual de la ronda:")
+                        print("Cartas")
                         for j in range(len(mazo)):
                             if mazo2[j] == "X":
                                 print(mazo[j])
                         for j in dictjugar:
-                            print(j,dictjugar[j][5],dictjugar[j][6])
+                            print(j, " Puntos apostados:", dictjugar[j][5], " Puntos Restantes", dictjugar[j][6])
                         if dictjugar[i][1] != "Eliminado":
                             while True: #Apuesta
-                                print("Realiza una apuesta (Minimo 0.5)")
+                                print("\n","Realiza una apuesta (Minimo 0.5)")
                                 apuesta = float(input())
                                 if apuesta > dictjugar[i][6]:
-                                    print("Apostaste mas puntos de los que tienes")
+                                    print("\n","Apostaste mas puntos de los que tienes")
                                 elif apuesta < 0.5:
-                                    print("Apostaste una cantidad inferior a la minima")
+                                    print("\n","Apostaste una cantidad inferior a la minima")
                                 else:
                                     dictjugar[i][5] = apuesta
                                     dictjugar[i][6] = dictjugar[i][6] - apuesta
                                 break
                             while True: #Subbucle mano por jugador
-                                for j in range(len(dictjugar[i][0])):   #Bucle sacado de StackOverflow para imprimir cartas
-                                    print("Carta",j+1,": ",dictjugar[i][0][j])
-                                print("Que quieres hacer?\n1) Seguir Jugando\n2) Plantarse:")
-                                elegir = int(input())
-                                if elegir == 1:
-                                    while True:
-                                        a = random.randint(0, len(mazo))
-                                        if mazo2[a] != "X":
-                                            mazo2[a] = "X"
-                                            dictjugar[i][0].append(mazo[a])
-                                            dictjugar[i][4] = dictjugar[i][4] + mazo[a][2]
-                                            break
-                                        if dictjugar[i][4] > 7.5:
-                                            dictjugar[i][1] = "Eliminado"
-                                            dictjugar["Banca"][6] = dictjugar["Banca"][6] + dictjugar[i][5]
-                                            break
-                                        if dictjugar[i][6] <= 0:
-                                            dictjugar[i][2] = "Eliminado"
-                                            dictjugar["Banca"][6] = dictjugar["Banca"][6] + dictjugar[i][5]
-                                            break
-                                elif elegir== 2:
-                                    dictjugar[i][1] = "Plantado"
-                                    break
-                                else:
-                                    print("Elige una de las 2 opciones")
-                #Turno de la Banca, se ejecuta cuando todos los otros han acabado
+                               temp3 = 0
+                               if dictjugar[i][1] != "Eliminado":
+                                   for j in range(len(dictjugar[i][0])):  # Bucle sacado de StackOverflow para imprimir cartas
+                                       print("Carta", j + 1, ": ", dictjugar[i][0][j])
+                                   print("\n","Que quieres hacer?\n1) Seguir Jugando\n2) Plantarse:")
+                                   elegir = int(input())
+                                   if elegir == 1:
+                                       while True:
+                                           a = random.randint(0, 39)
+                                           if mazo2[a] != "X":
+                                               mazo2[a] = "X"
+                                               dictjugar[i][0].append(mazo[a])
+                                               dictjugar[i][4] = dictjugar[i][4] + mazo[a][2]
+                                               if dictjugar[i][4] > 7.5:
+                                                   dictjugar[i][1] = "Eliminado"
+                                                   dictjugar["Banca"][6] = dictjugar["Banca"][6] + dictjugar[i][5]
+                                                   temp3 = 1
+                                                   if dictjugar[i][6] <= 0 :  # dictjugar[i][6], 6 hace referencia a puntos restantes usuario, 5 a puntos apostados, 2 a estado en partida, 1 estado ronda
+                                                      dictjugar[i][2] = "Eliminado"
+                                                      dictjugar["Banca"][6] = dictjugar["Banca"][6] + dictjugar[i][5]
+                                                      temp3 = 1
+                                                      break
+                                               else:
+                                                  break
+                                   elif elegir == 2:
+                                       dictjugar[i][1] = "Plantado"
+                                       break
+                                   if temp3 == 1:
+                                        break
+                                   else:
+                                       print("\n","Elige una de las 2 opciones")
+                                   print("\n")
+                #Turno de la Banca, se ejecuta c uando todos los otros han acabado
                 print("Informacion actual de la ronda:")
+                for j in dictjugar:
+                    if dictjugar[j][3] == 0 and j != "Banca":
+                        print(j," eres la Banca","\n")
+                        break
+                print("Cartas:")
                 for j in range(len(mazo)):
                     if mazo2[j] == "X":
                         print(mazo[j])
-                    for j in dictjugar:
-                        print(j,dictjugar[j][5], dictjugar[j][6])
-                    print("Banca, elije que hacer")
-                    while True:  # Subbucle mano por jugador
-                        for i in range(len(dictjugar[j][0])):  # Bucle sacado de StackOverflow para imprimir cartas
-                            print(dictjugar[i][0][j])
-                            print("Que quieres hacer?\n1) Seguir Jugando\n2) Plantarse:")
-                            elegir2 = input()
-                            if elegir2 == 1:
-                                while True:
-                                    a = random.randint(0, len(mazo))
-                                    if mazo2[a] != "X":
-                                       mazo2[a] = "X"
-                                       dictjugar["Banca"][0].append(mazo[a])
-                                       dictjugar["Banca"][4] = dictjugar["Banca"][4] + mazo[a][2]
-                                       break
-                                    if dictjugar["Banca"][4] > 7.5:
-                                        mintemp = 0
-                                        for k in dictjugar:
-                                            if k != "Banca":
-                                                if (dictjugar["Banca"][6] - dictjugar[k][5]) > 0:
-                                                    dictjugar[k][6] = dictjugar[k][6] + 2*dictjugar[k][5]
-                                                    mintemp = mintemp + dictjugar[k][5]
-                                                    dictjugar["Banca"][6] = dictjugar["Banca"][6] - mintemp
-                                                    dictjugar[k][5] = 0
-                                                else:
-                                                    dictjugar[k][6] = dictjugar[k][6] + dictjugar["Banca"][6]
-                                                    dictjugar["Banca"][2] = "Eliminado"
-                                                    for l in dictjugar:
-                                                        if dictjugar[l][3] == dictjugar["Banca"][3] and dictjugar[l] != "Banca":
-                                                            dictjugar[l][2] = "Eliminado"
-                                                            dictjugar[l][3] += temp
-                                                            break
-                                        break
-                            elif elegir2 == 2:
-                                dictjugar[i][1] = "Plantado"
-                                break
-                            else:
-                                print("Elige una de las 2 opciones")
+                for j in dictjugar:
+                    print(j, " Puntos apostados:", dictjugar[j][5], " Puntos Restantes", dictjugar[j][6])
+                print("\n","Banca, elije que hacer","\n")
+                temp3 = 0
+                while True:  # Subbucle mano Banca
+                    for i in range(len(dictjugar["Banca"][0])):
+                        print(dictjugar["Banca"][0][i])
+                    print("\n","Que quieres hacer?\n1) Seguir Jugando\n2) Plantarse:")
+                    bancae = int(input())
+                    if bancae == 1:
+                        while True:
+                            a = random.randint(0, 39)
+                            if mazo2[a] != "X":
+                                mazo2[a] = "X"
+                                dictjugar["Banca"][0].append(mazo[a])
+                                dictjugar["Banca"][4] = dictjugar["Banca"][4] + mazo[a][2]
+                                if dictjugar["Banca"][4] > 7.5:
+                                    mintemp = 0
+                                    for k in dictjugar:
+                                        if k != "Banca" and dictjugar[k][1] == "Eliminado" or dictjugar[k][2] == "Eliminado":
+                                            if (dictjugar["Banca"][6] - dictjugar[k][5]) > 0:
+                                                dictjugar[k][6] = dictjugar[k][6] + 2 * dictjugar[k][5]
+                                                mintemp = mintemp + dictjugar[k][5]
+                                                dictjugar["Banca"][6] = dictjugar["Banca"][6] - mintemp
+                                                dictjugar[k][5] = 0
+                                                temp3 = 1
+                                            else:
+                                                dictjugar[k][6] = dictjugar[k][6] + dictjugar["Banca"][6]
+                                                dictjugar["Banca"][2] = "Eliminado"
+                                                for l in dictjugar:
+                                                    if dictjugar[l][3] == dictjugar["Banca"][3] and dictjugar[l] != "Banca":
+                                                        dictjugar[l][2] = "Eliminado"
+                                                        dictjugar[l][3] += temp
+                                                        temp3 = 1
+                                else:
+                                    break
+                                if temp3 is True:
+                                    break
+                    if bancae == 2:
+                        dictjugar["Banca"][1] = "Plantado"
+                        break
+                    else:
+                        print("\n","Elige una de las 2 opciones")
+                    if temp3 == 1:
+                        break
+                    print("\n",)
+
                 comprovarpuntos = 0
                 temp2 = "a"
-                empate = 0
                 empat = []
-
+                ganador = "a"
+                #dictjugar[X][4] == En pos 4 dentro del diccionario X, se referencia a puntos cartas, es decir, suma de los puntos de los valores de las cartas que tiene cada usuario
                 for i in dictjugar:
                     if dictjugar[i][4] >= comprovarpuntos and not dictjugar[i][4] > 7.5:
                         comprovarpuntos = dictjugar[i][4]
-                        dictjugar[i][7] = 1
                         if temp2 != "a":
-                            dictjugar[temp2][7] = 0
                             temp2 = dictjugar[i]
+                            ganador = i
                             if dictjugar[i][4] == comprovarpuntos:
-                                empate = comprovarpuntos
+                                empat.append(i)
                                 for j in dictjugar:
                                     if dictjugar[j][4] == dictjugar[i][4]:
-                                        empat.append(dictjugar[j][4])
-                            if dictjugar[i][4] == 7.5:
-                                break
+                                        empat.append(j)
+                                for j in empat:
+                                    if j == "Banca":
+                                        ganador = j
+                                        break
+                                    else:
+                                        if dictjugar[j][0][0][1] != dictjugar[i][0][0][1]:
+                                            if dictjugar[j][0][0][1] == "oro" and dictjugar[i][0][0][1] != "oro":
+                                                ganador = j
+                                            else:
+                                                ganador = i
+                                            if dictjugar[j][0][0][1] == "copas" and dictjugar[i][0][0][1] != "oro" and \
+                                                    dictjugar[i][0][0][1] != "copas":
+                                                ganador = j
+                                            else:
+                                                ganador = i
+                                            if dictjugar[j][0][0][1] == "bastos" and dictjugar[i][0][0][1] != "oro" and \
+                                                    dictjugar[j][0][0][1] == "copas" and dictjugar[i][0][0][
+                                                1] != "bastps":
+                                                ganador = j
+                                            else:
+                                                ganador = i
+                                        else:
+                                            if dictjugar[j][0][0][2] > dictjugar[i][0][0][2]:
+                                                ganador = j
+                                            else:
+                                                ganador = i
                         else:
-                            temp2 = dictjugar[i]
-                            if dictjugar[i][4] == 7.5:
-                                break
-                if empate is True:
-                    for i in dictjugar:
-                        if dictjugar[i][4] in empat:
-                            print("pene")
+                            ganador = i
+                            temp2 = i
+                for i in dictjugar:
+                    if comprovarpuntos == dictjugar[i][4] and ganador == "Banca":
+                        for j in dictjugar:
+                            if j != "Banca" and dictjugar[j][1] == "Eliminado" or dictjugar[j][2] == "Eliminado":
+                                dictjugar["Banca"][6] = dictjugar["Banca"][6] + dictjugar[j][5]
+                                dictjugar[j][5] = 0
+                    elif comprovarpuntos == dictjugar[i][4] and ganador == i:
+                        dictjugar[i][8] = dictjugar[i][8] + 1
+                        if dictjugar[i][4] == 7.5:
+                            dictjugar[i][6] = dictjugar[i][6] + 3*dictjugar[i][5]
+                        else:
+                            dictjugar[i][6] = dictjugar[i][6] + 3 * dictjugar[i][5]
+                            dictjugar["Banca"][6] = dictjugar["Banca"][6] - 2*dictjugar[i][5]
+                        break
+                print("Ganador de ronda:", ganador,"\n")
+                conttemp = 0
+                for i in dictjugar:
+                    if dictjugar[i][6] == 0:
+                        dictjugar[i][2] = "Eliminado"
+                for i in dictjugar:
+                    if dictjugar[i][2] != "Eliminado" and i != "Banca":
+                        conttemp = conttemp + 1
+                if conttemp == 1:
+                    for k in dictjugar:
+                        if k != "Banca" and dictjugar[k][2] != "Eliminado":
+                            print("Gano la partida ", k)
+                            break
+                    fbreak = 1
                 break
-            break
+            if fbreak == True:
+                break
 
     elif menu0 == "B" or menu0 == "b":
         while True:
@@ -230,5 +302,7 @@ while True:
         break
     else:
         print("Elige una de las opciones en pantalla\n")
+
+
 
 
