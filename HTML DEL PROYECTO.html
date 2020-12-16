@@ -1,159 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS_PROYECTO.css">
-    <title>HTML PROYECTO</title>
-</head>
-<body id="bodystyle" id="">
-<div id="divprincipal" id="letrablanca">
-    <div id="divhead">
-        <h1>MENU</h1>
-        <ul>
-            <li id="lista">
-                <a href="#query1" id="separar">Primera Query</a>
-                <a href="#query2" id="separar">Segunda Query</a>
-                <a href="#query3" id="separar">Tercera Query</a>
-                <a href="#query5" id="separar">Quinta Query</a>
-            </li>
-        </ul>
-    </div>
-    <div id="flexbox-container" id="query1">
-     <div><table border="1">
-        <thead>
-            <tr>
-            <th>username</th>
-            <th>numero_carta</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>Rafa</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>Jenni</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td>Leandro</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>Belen</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td>Jordi</td>
-              <td>6</td>
-            </tr>
-         </tbody>
-     </table>
-     </div>
-    </div>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="CSS_PROYECTO.css">
+		<title>HTML PROYECTO</title>
+	</head>
+	<body>
 
-    <div id="flexbox-container" id="query2">
-     <div><table border="1">
-        <thead>
-          <tr>
-            <th>nombre</th>
-            <th>max(apuesta)</th>
-            <th>idpartida</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Belen</td>
-                <td>17.00</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>BotBeige</td>
-                <td>10.00</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>BotBeige</td>
-                <td>2.00</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>Rafa</td>
-                <td>2.00</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>Rafa</td>
-                <td>2.00</td>
-                <td>5</td>
-            </tr>
-           </tbody>
-        </table>
-       </div>
-     </div>
+		<div class="divhead">
+			<h1>MENU</h1>
+			<ul>
+				<li class="lista">
+					<a href="#query1" class="separar">Primera Query</a>
+					<a href="#query2" class="separar">Segunda Query</a>
+					<a href="#query3" class="separar">Tercera Query</a>
+					<a href="#query5" class="separar">Quinta Query</a>
+					<a href="#query10" class="separar">Decima Query</a>
+					<a href="#query11" class="separar">Onceava Query</a>
+					<a href="#query12" class="separar">Doceava Query</a>
+					<a href="#query13" class="separar">Decimo Tercera Query</a>
+				</li>
+			</ul>
+		</div>
+		<div class="flexbox-container" id="query1">
+			<h3 class="textformat">Query 1</h3>
+			<p class="textformat">Mostrar la Carta inicial mas repetida por cada
+				jugador(mostrar nombre jugador y carta).</p>
+			<div><table border="1">
+					<thead>
+						<tr>
+							<th>username</th>
+							<th>numero_carta</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Rafa</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>Jenni</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>Leandro</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>Belen</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>Jordi</td>
+							<td>6</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-    <div id="flexbox-container" id="query3">
-        <div><table border="1">
-            <thead>
-              <tr>
-                <th>nombre</th>
-                <th>min(apuesta)</th>
-                <th>idpartida</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Rafa</td>
-                    <td>2.00</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Jordi</td>
-                    <td>1.00</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>BotBeige</td>
-                    <td>1.00</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Rafa</td>
-                    <td>1.00</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>Rafa</td>
-                    <td>1.00</td>
-                    <td>5</td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
-     </div>
+		<div class="flexbox-container" id="query2">
+			<h3 class="textformat">Query 2</h3>
+			<p class="textformat">Para hacer esta query lo que hemos hecho ha sido
+				primero seleccionar los campos que nos pedían y a parte los campos de
+				apuesta, utilizando un max para así sacar la apuesta Máxima y a parte
+				la id de la partida, después hemos utilizado la función
+				case para hacer que si se cumple la condición de que username no es
+				nulo, entonces muestra el nombre de usuario, y en caso
+				contrario muestra la descripción del bot que ahí es donde se muestra
+				el nombre del bot, todo esto lo hemos hecho para que salga
+				lo que salga se muestre en una nueva columna llamada nombre. después
+				de eso hemos puesto que los valores del máximo de la apuesta salgan
+				como apuesta y los valores de la id de partida salga como idpartida.
+				Una vez hecho todo esto hemos empezado a conectar entre si las tablas
+				que necesitábamos, para ello hemos hecho uso de dos left joins uno
+				para conectar jugador con bot y otro para conectar usuario con
+				jugador, después
+				hemos conectado mediante inner joins las tablas de turnos y partidas
+				después de esto lo hemos agrupado todo por el id de la partida y el
+				username.
+				Una vez hecho la primera fase que era pasa sacar el from de la query,
+				lo siguiente que hemos hecho ha sido hacer que el atributo de
+				idpartida dentro de la tabla apuesta , este dentro de la subquery que
+				hemos abierto en que seleccionamos el máximo de apuesta y la id
+				de la partida como apuesta, después hemos conectado mediante otros dos
+				left joins las tablas bot y jugador y usuario y jugador como hemos
+				hecho anteriormente, y lo mismo con las tablas de participante, turnos
+				y partida una vez conectado todo lo hemos agrupado por la id de la
+				partida
+				y lo hemos ordenado por el max de la apuesta en orden descendente,
+				después de esto hemos cerrado la subquery y hemos puesto que el
+				conjunto de toda
+				la query que hemos hecho se agrupe por la id de la partida y se ordene
+				por la id de la partida. De esta manera la query nos muestra el nombre
+				del
+				jugador, su apuesta Máxima y la id de la partida.</p>
+			<div><table border="1">
+					<thead>
+						<tr>
+							<th>nombre</th>
+							<th>max(apuesta)</th>
+							<th>idpartida</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Belen</td>
+							<td>17.00</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>BotBeige</td>
+							<td>10.00</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>BotBeige</td>
+							<td>2.00</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>Rafa</td>
+							<td>2.00</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>Rafa</td>
+							<td>2.00</td>
+							<td>5</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-    <div id="flexbox-container" id="query5">
-        <div><table border="1">
-            <thead>
-              <tr>
-                <th>descripcion</th>
-                <th>ganador_partida</th>
-                <th>porcentaje</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>BotBeige</td>
-                    <td>6</td>
-                    <td>40.00</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-     </div>
-    </div>
+		<div class="flexbox-container" id="query3">
+			<h3 class="textformat">Query 3</h3>
+			<p class="textformat">Para hacer esta query lo que hemos hecho ha sido
+				primero seleccionar los campos que nos pedían y a parte los campos de
+				apuesta, utilizando
+				un min para así sacar la apuesta Máxima y a parte la id de la partida,
+				después hemos utilizado la función case para hacer que si se cumple la
+				condición de que username no es nulo, entonces muestra el nombre de
+				usuario, y en caso contrario muestra la descripción del bot que ahí es
+				donde
+				se muestra el nombre del bot, todo esto lo hemos hecho para que salga
+				lo que salga se muestre en una nueva columna llamada nombre. después
+				de eso
+				hemos puesto que los valores del mínimo de la apuesta salgan como
+				apuesta y los valores de la id de partida salga como idpartida. Una
+				vez hecho todo
+				esto hemos empezado a conectar entre si las tablas que necesitábamos,
+				para ello hemos hecho uso de dos left joins uno para conectar jugador
+				con bot y
+				otro para conectar usuario con jugador, después hemos conectado
+				mediante inner joins las tablas de turnos y partidas después de esto
+				lo hemos agrupado
+				todo por el id de la partida y el username.Una vez hecho la primera
+				fase que era pasa sacar el from de la query, lo siguiente que hemos
+				hecho ha sido
+				hacer que el atributo de idpartida dentro de la tabla apuesta , este
+				dentro de la subquery que hemos abierto en que seleccionamos el mínimo
+				de apuesta
+				y la id de la partida como apuesta, después hemos conectado mediante
+				otros dos left joins las tablas bot y jugador y usuario y jugador como
+				hemos hecho
+				anteriormente, y lo mismo con las tablas de participante, turnos y
+				partida una vez conectado todo lo hemos agrupado por la id de la
+				partida y lo hemos
+				ordenado por el min de la apuesta en orden descendente, después de
+				esto hemos cerrado la subquery y hemos puesto que el conjunto de toda
+				la query que
+				hemos hecho se agrupe por la id de la partida y se ordene por la id de
+				la partida. De esta manera la query nos muestra el nombre del jugador,
+				su apuesta
+				Máxima y la id de la partida.</p>
+			<div><table border="1">
+					<thead>
+						<tr>
+							<th>nombre</th>
+							<th>min(apuesta)</th>
+							<th>idpartida</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Rafa</td>
+							<td>2.00</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>Jordi</td>
+							<td>1.00</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>BotBeige</td>
+							<td>1.00</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>Rafa</td>
+							<td>1.00</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>Rafa</td>
+							<td>1.00</td>
+							<td>5</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="flexbox-container" id="query5">
+			<h3 class="textformat">Query 5</h3>
+			<p class="textformat">En esta query lo que nos pedía era sacar el
+				porcentaje de partidas ganadas de los bots en general, entonces lo que
+				hemos hecho para sacar
+				la query es seleccionar con un distinct para que no se repitan los
+				datos, las tablas de descripción del bot , donde se encuentra el
+				nombre
+				del bot, el ganador de cada partida y para sacar el porcentaje lo que
+				hemos hecho ha sido dividir 2 entre el numero de partidas que hay que
+				y
+				después multiplicado por cien, a todo esto delante le hemos puesto un
+				truncate para que solo nos salgan dos decimales, a toda esta operación
+				le
+				hemos puesto un alias llamado porcentaje para que salga en una tabla
+				nueva llamada porcentaje. Finalmente hemos conectado las tablas de
+				participante
+				con partida, jugador con participante y bot con jugador, finalmente
+				para que funcionase hemos puesto que solo saque la query cuando el
+				idbot no sea nulo.</p>
+			<div><table border="1">
+					<thead>
+						<tr>
+							<th>descripcion</th>
+							<th>ganador_partida</th>
+							<th>porcentaje</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>BotBeige</td>
+							<td>6</td>
+							<td>40.00</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="flexbox-container" id="query10">
+			<h3 class="textformat query10">Query 10</h3>
+			<p class="textformat">Para esta query lo que hemos hecho ha sido
+				seleccionar con un distinct para que no se repitan los datos los
+				campos
+				de username, la descripción del bot, el nombre de la sala de la
+				partida y el id del participante del ganador de la partida y con un
+				count hemos sacado
+				cuantos puntos finales hay con un alias llamado puntuacion_final
+				todo esto lo hemos conectado con 3 inner joins que han conectado
+				partida
+				con turnos, participante con partida y jugador con participante
+				después con dos left joins hemos conectado a usuario con la tabla
+				jugador y a bot
+				con jugador, finalmente hemos agrupado todo por el id de la partida.</p>
+			<div><table border="1">
+					<thead>
+						<tr>
+							<th>username</th>
+							<th>descripcion</th>
+							<th>nombre_sala</th>
+							<th>ganador_partida</th>
+							<th>puntuacion_final</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>None</td>
+							<td>BotBeige</td>
+							<td>Sala AMS</td>
+							<td>6</td>
+							<td>56</td>
+						</tr>
+						<tr>
+							<td>None</td>
+							<td>BotBeige</td>
+							<td>Sala Xavi contra el Bot</td>
+							<td>6</td>
+							<td>32</td>
+						</tr>
+						<tr>
+							<td>Jenni</td>
+							<td>None</td>
+							<td>Sala AWS</td>
+							<td>2</td>
+							<td>22</td>
+						</tr>
+						<tr>
+							<td>Leandro</td>
+							<td>None</td>
+							<td>Sala Rafa contra Leandro</td>
+							<td>3</td>
+							<td>32</td>
+						</tr>
+						<tr>
+							<td>Leandro</td>
+							<td>None</td>
+							<td>Sala Rafa contra Leandro 2</td>
+							<td>3</td>
+							<td>32</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="flexbox-container" id="query11">
+			<h3 class="textformat query11">Query 11</h3>
+			<p class="textformat">Aqui nos pueda sacar la apuesta media por partida asi
+				que lo que hemos hecho ha sido seleccionar el id de la partida
+				y con la función avg hemos hecho que nos saque la media de apuestas, a todo
+				esto hemos usado un truncate para que solo tengan
+				2 decimales, todo esto le hemos puesto un alias llamado apuesta media. Una
+				vez hecho esto hemos conectado las tablas mediante
+				inner joins y finalmente hemos agrupado todo por el id de la partida.</p>
+			<div><table border="1">
+					<thead>
+						<tr>
+							<th>idpartida</th>
+							<th>ApuestaMedia</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>6.31</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>3.02</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>1.25</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>1.25</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>1.25</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="flexbox-container" id="query12">
+			<h3 class="textformat query12">Query 12</h3>
+			<p class="textformat query12">Para hacer esta query lo que hemos hecho ha
+				sido hacer un distinct para
+				que no se repitan los siguientes datos de las tablas, de usuario
+				hemos seleccionado todas las tablas ,después con el uso de la función max
+				hemos sacado su ultimo turno y le hemos puesto el alias de turno_max
+				y por ultimo hemos seleccionado la id de la partida, todo esto lo hemos
+				conectado con varios inner joins que nos han permitido conectar usuario
+				con jugador, jugador con participante, turnos con participante y partida con
+				turnos una vez hecho esto lo hemos agrupado todo por el id de la partida
+				y el id de participante después usando el having hemos creado una subquery
+				con el uso del having y seleccionando el ultimo turno, usando la función max
+				y agrupándola por el id de partida, finalmente todo esto lo hemos ordenado
+				por orden ascendente por el id de partida, id participante y el numero de
+				turno.</p>
+			<div><table border="1">
+					<thead>
+						<tr>
+							<th>idusuario</th>
+							<th>username</th>
+							<th>password</th>
+							<th>email</th>
+							<th>apuesta</th>
+							<th>trurno_max</th>
+							<th>idpartida</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Rafa</td>
+							<td>qwerty</td>
+							<td>rafa@gmail.com</td>
+							<td>1.00</td>
+							<td>17</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Rafa</td>
+							<td>qwerty</td>
+							<td>rafa@gmail.com</td>
+							<td>1.00</td>
+							<td>17</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Rafa</td>
+							<td>qwerty</td>
+							<td>rafa@gmail.com</td>
+							<td>2.00</td>
+							<td>6</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jenni</td>
+							<td>asdfg</td>
+							<td>jenni@gmail.com</td>
+							<td>2.00</td>
+							<td>6</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Leandro</td>
+							<td>qazxww</td>
+							<td>lean@gmail.com</td>
+							<td>None</td>
+							<td>17</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Leandro</td>
+							<td>qazxww</td>
+							<td>lean@gmail.com</td>
+							<td>None</td>
+							<td>17</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Leandro</td>
+							<td>qazxww</td>
+							<td>lean@gmail.com</td>
+							<td>2.00</td>
+							<td>4</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Belen</td>
+							<td>wsxzaq</td>
+							<td>mbelen@gmail.com</td>
+							<td>None</td>
+							<td>5</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Jordi</td>
+							<td>tgbvfr</td>
+							<td>jorge@gmail.com</td>
+							<td>None</td>
+							<td>17</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Jordi</td>
+							<td>tgbvfr</td>
+							<td>jorge@gmail.com</td>
+							<td>3.00</td>
+							<td>19</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Jordi</td>
+							<td>tgbvfr</td>
+							<td>jorge@gmail.com</td>
+							<td>5.00</td>
+							<td>6</td>
+							<td>1</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="flexbox-container" id="query13">
+			<h3 class="textformat query13">Query 13</h3>
+			<p class="textformat">Para sacar esta query lo que hemos hecho ha sido
+				seleccionar el id de partida con un alias llamado partida, después
+				hemos usado la función count para contar las cartas iniciales y le hemos
+				puesto un alias llamado número de cartas, luego hemos sumado el valor
+				y le hemos puesto un alias llamado valor total, a todo esto lo hemos sacado
+				de las tablas turnos y cartas y hemos hecho que solo saque los valores
+				cuando carta inical sea = al id de cartas finalmente lo hemos agrupado por
+				el id de partida</p>
+			<div><table border="1">
+					<thead>
+						<tr>
+							<th>partida</th>
+							<th>numero_de_cartas</th>
+							<th>valor_total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>22</td>
+							<td>63.00</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>56</td>
+							<td>185.50</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>32</td>
+							<td>99.00</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>32</td>
+							<td>116.00</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>32</td>
+							<td>80.50</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-    
-</body>
+	</body>
 </html>
