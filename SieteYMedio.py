@@ -254,7 +254,8 @@ while True:
                 break
 
     elif menu0 == "B" or menu0 == "b":
-        while True:
+        print("Codigo bloqueado temporalmente hasta finalizacion de configuracion de los bots")
+        '''while True:
             print("Especifica la cantidad de CPU's para jugar en contra o escribe -1 para volver atras:\nMinimo: 1\nMaximo: 7")
             cantcpu = int(input())
             if cantcpu >= 1 and cantcpu <= 7:
@@ -287,7 +288,7 @@ while True:
             else:
                 print("Escribe un valor correcto\n")
             if usuarios == True:
-                break
+                break'''
     elif menu0 == "C" or menu0 == "c": #Contiene info de que es el juego (Tambien sacado de StackOverflow)
         print("Siete y Medii:\n\nEl siete y medio es un juego de cartas que utiliza la baraja española de 40 cartas.\n "
               "Eljuego consiste en obtener siete puntos y medio, o acercarse a esta puntuación lo más\n"
